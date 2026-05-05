@@ -9,12 +9,6 @@
     <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Google Verification -->
-    <meta
-      name="google-site-verification"
-      content="3HnqK-VdYSw0Gvki7SZizE2J_mdws5GCxxGC8AmkTgA"
-    />
-
     <title>MediTrack</title>
   </head>
 
@@ -22,10 +16,13 @@
     <!-- React Root -->
     <div id="root"></div>
 
-    <!-- Ad Container (Controlled Placement) -->
+    <!-- Ad Container -->
     <div id="ad-container" style="text-align:center; margin-top:10px;"></div>
 
-    <!-- Ad Script (SAFE LOAD AFTER DOM) -->
+    <!-- Main React App -->
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Ad Script (load after page) -->
     <script>
       window.addEventListener("load", function () {
         try {
@@ -37,19 +34,18 @@
             params: {}
           };
 
-          var script = document.createElement("script");
-          script.src =
+          var adScript = document.createElement("script");
+          adScript.src =
             "https://www.highperformanceformat.com/f8e494ec9fe8f5026cb288ead823f93d/invoke.js";
-          script.async = true;
+          adScript.async = true;
 
-          document.getElementById("ad-container").appendChild(script);
-        } catch (e) {
-          console.error("Ad script failed:", e);
+          document
+            .getElementById("ad-container")
+            .appendChild(adScript);
+        } catch (err) {
+          console.error("Ad failed to load:", err);
         }
       });
     </script>
-
-    <!-- Main React App -->
-    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
