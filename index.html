@@ -6,37 +6,50 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Responsive Meta -->
+    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Google Verification -->
-    <meta name="google-site-verification" content="3HnqK-VdYSw0Gvki7SZizE2J_mdws5GCxxGC8AmkTgA" />
+    <meta
+      name="google-site-verification"
+      content="3HnqK-VdYSw0Gvki7SZizE2J_mdws5GCxxGC8AmkTgA"
+    />
 
     <title>MediTrack</title>
-
-    <!-- Ad Script Configuration -->
-    <script>
-       atOptions = {
-        key: "f8e494ec9fe8f5026cb288ead823f93d",
-        format: "iframe",
-        height: 90,
-        width: 728,
-        params: {}
-      };
-    </script>
-
-    <!-- Load Ad Script (async for performance) -->
-    <script
-      src="https://www.highperformanceformat.com/f8e494ec9fe8f5026cb288ead823f93d/invoke.js"
-      async>
-    </script>
   </head>
 
   <body>
     <!-- React Root -->
     <div id="root"></div>
 
-    <!-- Main React Entry -->
+    <!-- Ad Container (Controlled Placement) -->
+    <div id="ad-container" style="text-align:center; margin-top:10px;"></div>
+
+    <!-- Ad Script (SAFE LOAD AFTER DOM) -->
+    <script>
+      window.addEventListener("load", function () {
+        try {
+          window.atOptions = {
+            key: "f8e494ec9fe8f5026cb288ead823f93d",
+            format: "iframe",
+            height: 90,
+            width: 728,
+            params: {}
+          };
+
+          var script = document.createElement("script");
+          script.src =
+            "https://www.highperformanceformat.com/f8e494ec9fe8f5026cb288ead823f93d/invoke.js";
+          script.async = true;
+
+          document.getElementById("ad-container").appendChild(script);
+        } catch (e) {
+          console.error("Ad script failed:", e);
+        }
+      });
+    </script>
+
+    <!-- Main React App -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
