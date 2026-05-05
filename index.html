@@ -16,36 +16,7 @@
     <!-- React Root -->
     <div id="root"></div>
 
-    <!-- Ad Container -->
-    <div id="ad-container" style="text-align:center; margin-top:10px;"></div>
-
     <!-- Main React App -->
     <script type="module" src="/src/main.jsx"></script>
-
-    <!-- Ad Script (load after page) -->
-    <script>
-      window.addEventListener("load", function () {
-        try {
-          window.atOptions = {
-            key: "f8e494ec9fe8f5026cb288ead823f93d",
-            format: "iframe",
-            height: 90,
-            width: 728,
-            params: {}
-          };
-
-          var adScript = document.createElement("script");
-          adScript.src =
-            "https://www.highperformanceformat.com/f8e494ec9fe8f5026cb288ead823f93d/invoke.js";
-          adScript.async = true;
-
-          document
-            .getElementById("ad-container")
-            .appendChild(adScript);
-        } catch (err) {
-          console.error("Ad failed to load:", err);
-        }
-      });
-    </script>
   </body>
 </html>
